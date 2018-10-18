@@ -11,16 +11,19 @@ var LocalStrategy = require("passport-local");
 var commentRoutes = require("./routes/comments");
     campgroundRoutes = require("./routes/campgrounds");
     indexRoutes = require("./routes/index");
+var methodOverride = require("method-override");
 
 
 // seedDB()
 
-mongoose.connect('mongodb://localhost/yelp_camp');
+//mongoose.connect('mongodb://localhost/yelp_camp');
+mongoose.connect('mongodb://severussnape:harry1@ds019766.mlab.com:19766/yelpcamp95')
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
